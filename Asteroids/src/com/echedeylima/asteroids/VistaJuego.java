@@ -68,7 +68,7 @@ public class VistaJuego extends View {
 		}
 	}
 	
-	protected void actualizaFisica() {
+	protected synchronized void actualizaFisica() {
 		long ahora = System.currentTimeMillis();
 		//para la ejecucion si aun no se ha pumplido el periodo de proceso
 		if (ultimoProceso + PERIODO_PROCESO > ahora)
@@ -116,7 +116,7 @@ public class VistaJuego extends View {
 	}
 
 	@Override
-	protected void onDraw(Canvas canvas) {
+	protected synchronized void onDraw(Canvas canvas) {
 		super.onDraw(canvas);
 		// dibujar nave
 		nave.dibujaGrafico(canvas);
