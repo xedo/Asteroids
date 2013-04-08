@@ -1,0 +1,97 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/LinearLayout1"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:gravity="center"
+    android:orientation="vertical"
+    android:padding="30dip"
+    tools:context=".Asteroids"
+    android:background="@drawable/degradado" >
+
+    <!-- textSize ajustado para la vista paronamica -->
+
+    <TextView
+        style="@style/TextoAsteroides"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="@string/appName"
+        android:textSize="18pt" />
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:stretchColumns="*" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <!-- Boton extendido en dos columnas -->
+
+            <Button
+                android:id="@+id/button1"
+                style="@style/TextoAsteroides.Botones"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_span="2"
+                android:onClick="lanzarJuego"
+                android:text="@string/start"
+                android:textColor="#000" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/button2"
+                style="@style/TextoAsteroides.Botones"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="lanzarPreferencias"
+                android:text="@string/config"
+                android:textColor="#000" />
+
+            <Button
+                android:id="@+id/button5"
+                style="@style/TextoAsteroides.Botones"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="lanzarPuntuaciones"
+                android:text="@string/scores"
+                android:textColor="#000" />
+
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <Button
+                android:id="@+id/button3"
+                style="@style/TextoAsteroides.Botones"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="lanzarAcercaDe"
+                android:text="@string/about"
+                android:textColor="#000" />
+
+            <Button
+                android:id="@+id/button4"
+                style="@style/TextoAsteroides.Botones"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:onClick="exit"
+                android:text="@string/exit"
+                android:textColor="#000" />
+        </TableRow>
+    </TableLayout>
+
+</LinearLayout>

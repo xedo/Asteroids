@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="app_name">Asteroids</string>
+    <string name="hello_world">Hello world!</string>
+    <string name="menu_settings">Settings</string>
+    <string name="appName">Asteroids</string>
+    <string name="start">Play</string>
+    <string name="config">Config</string>
+    <string name="about">About</string>
+    <string name="exit">Exit</string>
+    <string name="about_as">This program has been develop like example to show how throw activities from the main activity.</string>
+    <string name="aboutTitle">About us&#8230;</string>
+    <string name="scores">Scores</string>
+    <string name="noscores">No Scores</string>
+
+</resources>
