@@ -27,7 +27,7 @@ public class VistaJuego extends View {
 	
 	// Thread
 	private ThreadJuego thread = new ThreadJuego();
-	private static int PERIODO_PROCESO = 50;
+	private static int PERIODO_PROCESO = 20; //tiempo de actualizacion
 	private long ultimoProceso = 0;
 	
 	// Aciones
@@ -42,12 +42,14 @@ public class VistaJuego extends View {
 			disparo = true;
 			break;
 		case MotionEvent.ACTION_MOVE:
+			//control de giro
 			float dx = Math.abs(x - mX);
 			float dy = Math.abs(y - mY);
 			if ( dy < 6 && dx > 6 ){
 				giroNave = Math.round((x - mX) / 2);
 				disparo = false;
 			}
+			//control de velocidad
 			else if (dx < 6 && dy > 6){
 				aceleracionNave = Math.round((mY - y) / 25);
 				disparo = false;
@@ -70,6 +72,11 @@ public class VistaJuego extends View {
 		public void run(){
 			while (true){
 				actualizaFisica();
+				try{
+					Thread.sleep(PERIODO_PROCESO);
+				}catch (InterruptedException e){
+					Thread.currentThread().interrupt();
+				}
 			}
 		}
 	}
