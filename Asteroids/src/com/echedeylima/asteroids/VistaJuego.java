@@ -46,12 +46,13 @@ public class VistaJuego extends View {
 			float dx = Math.abs(x - mX);
 			float dy = Math.abs(y - mY);
 			if ( dy < 6 && dx > 6 ){
-				giroNave = Math.round((x - mX) / 2);
+				giroNave = Math.round((x - mX) / 4);
 				disparo = false;
 			}
 			//control de velocidad
 			else if (dx < 6 && dy > 6){
-				aceleracionNave = Math.round((mY - y) / 25);
+				if (Math.round(mY - y) > 0)
+					aceleracionNave = Math.round((mY - y) / 80);
 				disparo = false;
 			}
 			break;
