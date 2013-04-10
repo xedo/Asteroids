@@ -6,6 +6,7 @@ import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
+import android.view.MotionEvent;
 import android.view.View;
 
 public class VistaJuego extends View {
@@ -16,6 +17,8 @@ public class VistaJuego extends View {
 	private float aceleracionNave;
 	private static final int PASO_GIRO_NAVE = 5;
 	private static final float PASO_ACELERACION_NAVE = 0.5f;
+	private float mX = 0, mY = 0; //ultimas coordenadas
+	private boolean disparo = false;
 
 	// Asteroides
 	private Vector<Grafico> Asteroides; // Vector con los asteroides
@@ -26,6 +29,41 @@ public class VistaJuego extends View {
 	private ThreadJuego thread = new ThreadJuego();
 	private static int PERIODO_PROCESO = 50;
 	private long ultimoProceso = 0;
+	
+	// Aciones
+	@Override
+	public boolean onTouchEvent (MotionEvent event) {
+		super.onTouchEvent(event);
+		//coordenadas del evento
+		float x = event.getX();
+		float y = event.getY();
+		switch (event.getAction()){
+		case MotionEvent.ACTION_DOWN:
+			disparo = true;
+			break;
+		case MotionEvent.ACTION_MOVE:
+			float dx = Math.abs(x - mX);
+			float dy = Math.abs(y - mY);
+			if ( dy < 6 && dx > 6 ){
+				giroNave = Math.round((x - mX) / 2);
+				disparo = false;
+			}
+			else if (dx < 6 && dy > 6){
+				aceleracionNave = Math.round((mY - y) / 25);
+				disparo = false;
+			}
+			break;
+		case MotionEvent.ACTION_UP:
+			giroNave = 0;
+			aceleracionNave = 0;
+			if (disparo)
+				//ActivarMisil();
+			break;
+		}
+		mX = x;
+		mY = y;
+		return true;
+	}
 	
 	public class ThreadJuego extends Thread {
 		@Override
